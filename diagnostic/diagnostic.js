@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.set('port', 50261);
+app.set('port', 50262);
 
 app.use(function(req, res, next){
 	res.header('Access-Control-Allow-Origin', '*');
@@ -225,9 +225,7 @@ app.get('/insert', function(req, res, next){
  * This function will insert an order into order query
  ***********************/
 function insertOrderQuery(req){
-	var customerQuery, shop_id;
-
-	shop_id = "1";
+	var customerQuery;
 
 	// Subquery: We will query the customer database with the given f_name and l_name
 	customerQuery = '(SELECT customer_id FROM customer WHERE f_name = "' + req.query.f_name +
@@ -235,7 +233,7 @@ function insertOrderQuery(req){
 	
 	var orderQuery = 'INSERT INTO `order` (order_qty, total_sale, date_sold, customer_id, shop_id) ' +
 				'VALUES (' + req.query.order_qty + ',' + req.query.total_sale + ',\'' + req.query.date_sold + '\',' + 
-				customerQuery + ',' + shop_id + '); \n';
+				customerQuery + ',' + ' (SELECT MAX(`record_shop`.shop_id) FROM `record_shop`)); \n';
 	
 	return orderQuery;
 }
