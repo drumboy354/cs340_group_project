@@ -7,7 +7,7 @@ var ROWS = 1;
 var TABLE_ID = "dataTable";
 var TABLE_NAME = "order";
 var ID_NAME = "order_id";
-var SQLPORT = "50261";
+var SQLPORT = "50262";
 
 // Populate customer list
 populateCustomerList();

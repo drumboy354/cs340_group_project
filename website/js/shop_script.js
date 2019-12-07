@@ -7,7 +7,7 @@ var ROWS = 1;
 var TABLE_ID = "dataTable";
 var TABLE_NAME = "record_shop";
 var ID_NAME = "shop_id";
-var SQLPORT = "50261";
+var SQLPORT = "50262";
 
 /***************
 * Create Table *
@@ -68,6 +68,7 @@ function deleteRow(tableID, button){
 		var table = document.getElementById(tableID);
 		var rowCount = table.rows.length;
 		var currentRow = button.parentElement.parentElement;
+		var id = currentRow.getAttribute("id")
 
 		// CHECK AND MAKE SURE THERE'S NO LESS THAN 1 INFORMATION ROW.
 		//	IF THERE IS, DON'T DELETE ANYTHING.
